@@ -91,5 +91,35 @@ export class dashboardPage extends basePage {
         await expect(this.page).toHaveURL('https://qaplayground.com/bank/bill-pay');
     }
 
+    async getCheckingBalance(): Promise<number> {
+
+         await this.page.getByTestId('view-all-transactions-btn').click();
+
+
+           const checking = Number(
+            await this.page
+                .locator('tr[data-account-type="checking"]')
+                .getByTestId('account-row-balance')
+                .getAttribute('data-balance')
+                );
+
+            return checking;
+        
+    }
+
+    async getSavingsBalance(): Promise<number> {
+
+
+           const savings = Number(
+            await this.page
+                .locator('tr[data-account-type="savings"]')
+                .getByTestId('account-row-balance')
+                .getAttribute('data-balance')
+                );
+
+            return savings;
+        
+    }
+
 
 }

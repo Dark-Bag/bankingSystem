@@ -42,6 +42,13 @@ export const randomData = {
     validTransfer: {
         amount: faker.finance.amount({
             min: 100,
+            max: 500,
+            dec: 2,
+        }),
+    },
+    insufficientFunds: {
+        amount: faker.finance.amount({
+            min: 5000,
             max: 10000,
             dec: 2,
         }),
