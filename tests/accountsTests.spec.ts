@@ -2,7 +2,7 @@ import {expect, test} from '../src/fixtures/customFixtures';
 import {randomData, validUsers} from '../src/data/testData';
 import { accountsPage } from '../src/pages/accountsPage';
 
-test('Verify Accounts List Load ', async ({page, loginPage, accountsPage}) => {
+test('TC-ACC-001: Verify Accounts List Load ', async ({page, loginPage, accountsPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await accountsPage.verifyAccountsPage(); 
@@ -10,7 +10,7 @@ test('Verify Accounts List Load ', async ({page, loginPage, accountsPage}) => {
 
 });
 
-test('Verify Account Details Display ', async ({page, loginPage, accountsPage}) => {
+test('TC-ACC-002: Verify Account Details Display ', async ({page, loginPage, accountsPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await accountsPage.verifyAccountDetails(); 
@@ -18,7 +18,7 @@ test('Verify Account Details Display ', async ({page, loginPage, accountsPage}) 
 
 });
 
-test('Verify Overdraft Banner ', async ({page, loginPage, accountsPage}) => {
+test('TC-ACC-003: Verify Overdraft Banner ', async ({page, loginPage, accountsPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.overdraft.username, validUsers.overdraft.password);
     await accountsPage.verifyOverdraftBanner(); 
@@ -26,7 +26,7 @@ test('Verify Overdraft Banner ', async ({page, loginPage, accountsPage}) => {
 
 });
 
-test('Verify Frozen Account Alert ', async ({page, loginPage, accountsPage}) => {
+test('TC-ACC-004: Verify Frozen Account Alert ', async ({page, loginPage, accountsPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.frozen.username, validUsers.frozen.password);
     await accountsPage.verifyFrozenBanner(); 
@@ -34,7 +34,7 @@ test('Verify Frozen Account Alert ', async ({page, loginPage, accountsPage}) => 
 
 });
 
-test('Verify Add Account Functionality ', async ({page, loginPage, accountsPage}) => {
+test('TC-ACC-005: Verify Add Account Functionality ', async ({page, loginPage, accountsPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await accountsPage.verifyAddAccountFunctionality(randomData.validTransfer.amount, randomData.validTransfer.amount); 

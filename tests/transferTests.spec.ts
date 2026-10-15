@@ -1,17 +1,17 @@
-import {expect, test} from '../src/fixtures/customFixtures';
-import {invalidUsers, randomData, validUsers} from '../src/data/testData';
-import { dashboardPage } from '../src/pages/dashboardPage';
+    import {expect, test} from '../src/fixtures/customFixtures';
+    import {invalidUsers, randomData, validUsers} from '../src/data/testData';
+    import { dashboardPage } from '../src/pages/dashboardPage';
 
 
-test('Verify Transfer Page Load ', async ({page, loginPage, transferPage}) => {
-    await loginPage.basePageGoToUrl('');
-    await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
-    await transferPage.verifyTransferPage(); 
-   // await page.pause();
+    test('TC-XFER-001: Verify Transfer Page Load ', async ({page, loginPage, transferPage}) => {
+        await loginPage.basePageGoToUrl('');
+        await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
+        await transferPage.verifyTransferPage(); 
+    // await page.pause();
 
-});
+    });
 
-test('Verify Insufficient Funds Validation ', async ({page, loginPage, transferPage}) => {
+test('TC-XFER-002: Verify Insufficient Funds Validation ', async ({page, loginPage, transferPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await transferPage.verifyInsufficientFundsValidation(randomData.insufficientFunds.amount); 
@@ -19,7 +19,7 @@ test('Verify Insufficient Funds Validation ', async ({page, loginPage, transferP
 
 });
 
-test('Verify Successful Transfer ', async ({page, loginPage, transferPage}) => {
+test('TC-XFER-003: Verify Successful Transfer ', async ({page, loginPage, transferPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await transferPage.verifySuccessfulTransfer(randomData.validTransfer.amount); 
@@ -27,7 +27,7 @@ test('Verify Successful Transfer ', async ({page, loginPage, transferPage}) => {
 
 });
 
-test('Verify Transfer Balance Update ', async ({page, loginPage, transferPage, dashboardPage}) => {
+test('TC-XFER-004: Verify Transfer Balance Update ', async ({page, loginPage, transferPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
 

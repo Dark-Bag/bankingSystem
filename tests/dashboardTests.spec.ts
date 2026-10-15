@@ -2,7 +2,7 @@ import {expect, test} from '../src/fixtures/customFixtures';
 import {invalidUsers, validUsers} from '../src/data/testData';
 
 
-test('Verify Dashboard Load ', async ({page, loginPage, dashboardPage}) => {
+test('TC-DASH-001: Verify Dashboard Load ', async ({page, loginPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await dashboardPage.dashboardWelcomeMessage(); 
@@ -10,7 +10,7 @@ test('Verify Dashboard Load ', async ({page, loginPage, dashboardPage}) => {
 
 });
 
-test('Verify Total Balance ', async ({page, loginPage, dashboardPage}) => {
+test('TC-DASH-002: Verify Total Balance ', async ({page, loginPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await dashboardPage.verifyTotalBalance(); 
@@ -18,7 +18,7 @@ test('Verify Total Balance ', async ({page, loginPage, dashboardPage}) => {
 
 });
 
-test('Verify Recent Transactions ', async ({page, loginPage, dashboardPage}) => {
+test('TC-DASH-003: Verify Recent Transactions ', async ({page, loginPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await dashboardPage.verifyRecentTransactions();
@@ -26,7 +26,7 @@ test('Verify Recent Transactions ', async ({page, loginPage, dashboardPage}) => 
 
 });
 
-test('Verify Quick Transfer Links ', async ({page, loginPage, dashboardPage}) => {
+test('TC-DASH-004: Verify Quick Transfer Links ', async ({page, loginPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await dashboardPage.quickTransferLinks();
@@ -34,7 +34,7 @@ test('Verify Quick Transfer Links ', async ({page, loginPage, dashboardPage}) =>
 
 });
 
-test('Verify Quick Bill Pay Links ', async ({page, loginPage, dashboardPage}) => {
+test('TC-DASH-005: Verify Quick Bill Pay Links ', async ({page, loginPage, dashboardPage}) => {
     await loginPage.basePageGoToUrl('');
     await loginPage.userLogin(validUsers.admin.username, validUsers.admin.password);
     await dashboardPage.payBill();
