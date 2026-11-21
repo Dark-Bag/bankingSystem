@@ -1,34 +1,38 @@
-        import { Page, Locator, expect} from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 
-        export class basePage {
-            
-            constructor(public page: Page) {
-                this.page = page;
-            }
+export class basePage {
 
-            //create reusable methods for common actions on the page
-            async basePageGoToUrl(url: string) {
-                await this.page.goto(url);
-            }
+    constructor(public page: Page) {}
 
-            async basePageClickElement(locator: Locator) {
-                await locator.click();
-            }
+    // Reusable methods for common actions on the page
+    async basePageGoToUrl(url: string) {
+        await this.page.goto(url);
+    }
 
-            async basePageEnterText(locator: Locator, text: string) {
-                await locator.clear();
-                await locator.fill(text);
-            }
+    async basePageClickElement(locator: Locator) {
+        await locator.click();
+    }
 
-            async basePageGetTextValue(locator: Locator): Promise<string> {
-                return await locator.inputValue();
-            }
-            
-            async basePageVerifyElementIsVisible(locator: Locator) {
-                await expect(locator).toBeVisible();
-            }
+    async basePageEnterText(locator: Locator, text: string) {
+        await locator.clear();
+        await locator.fill(text);
+    }
 
+    // For input and textarea fields only (uses inputValue)
+    async basePageGetTextValue(locator: Locator): Promise<string> {
+        return await locator.inputValue();
+    }
 
+    // For any other element: headings, labels, balances, messages
+    async basePageGetText(locator: Locator): Promise<string> {
+        return (await locator.innerText()).trim();
+    }
 
+    async basePageVerifyElementIsVisible(locator: Locator) {
+        await expect(locator).toBeVisible();
+    }
 
-        }
+    async basePageVerifyElementContainsText(locator: Locator, text: string | RegExp) {
+        await expect(locator).toContainText(text);
+    }
+}
